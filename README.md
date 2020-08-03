@@ -31,7 +31,7 @@ The framework of Pan is shown as below.
 #### 4. Modify config for kafka in Pan
 ```shell
 [KafkaProxy]
-enable=true//开关
+enable=true
 KafkaWaitAll=true
 KafkaCompression=true
 KafkaPartitioner=round
@@ -40,8 +40,8 @@ brokers=localhost:9092
 sasl=false
 user=
 password=
-valid= //topic白名单，若为空则所有topic均可发送
-failMode=retry/save/discard(无限次重试、保存到redis、丢弃)
+valid= //topic whitelist，if empty, all topic can be sended
+failMode=retry/save/discard
 
 ```
 #### 5. Make
@@ -86,8 +86,8 @@ func main() {
 #### modify conf
 ```shell
 [KafkaProxy]
-unix=/home/www/pan/pan.sock   //pan的sock文件地址
-host=localhost:9999  //pan的ip:port地址
+unix=/home/www/pan/pan.sock   //sock in pan
+host=localhost:9999  //ip and post pan listen
 ```
 
 #### warn
