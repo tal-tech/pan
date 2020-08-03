@@ -83,15 +83,15 @@ func main() {
     }
 }
 ```
-#### 使用配置
+#### modify conf
 ```shell
 [KafkaProxy]
 unix=/home/www/pan/pan.sock   //pan的sock文件地址
 host=localhost:9999  //pan的ip:port地址
 ```
 
-#### 注意事项
-注意go.mod文件中替换包
+#### warn
+replace in go.mod
 ```shell
 replace github.com/henrylee2cn/teleport v5.0.0+incompatible => git.100tal.com/wangxiao_xueyan_gomirrors/github.com_henrylee2cn_teleport v1.0.0
 
