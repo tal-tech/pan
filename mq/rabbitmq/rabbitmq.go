@@ -14,11 +14,10 @@ import (
 	"pan/meta"
 	"pan/mq"
 
-	logger "git.100tal.com/wangxiao_go_lib/xesLogger"
-	"git.100tal.com/wangxiao_go_lib/xesTools/confutil"
-
 	"github.com/spf13/cast"
 	"github.com/streadway/amqp"
+	logger "github.com/tal-tech/loggerX"
+	"github.com/tal-tech/xtools/confutil"
 )
 
 type Rabbitmq struct {

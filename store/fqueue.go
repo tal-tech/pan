@@ -3,9 +3,8 @@ package store
 import (
 	"pan/meta"
 
-	"git.100tal.com/wangxiao_go_lib/xesTools/confutil"
-
 	"github.com/Joinhack/fqueue"
+	"github.com/tal-tech/xtools/confutil"
 )
 
 type FileQueue struct {

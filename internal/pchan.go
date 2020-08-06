@@ -7,10 +7,9 @@ import (
 	"pan/meta"
 	"pan/store"
 
-	"git.100tal.com/wangxiao_go_lib/xesLogger"
-
 	"github.com/Joinhack/fqueue"
 	"github.com/beeker1121/goque"
+	logger "github.com/tal-tech/loggerX"
 )
 
 type PChan struct {

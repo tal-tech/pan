@@ -6,9 +6,8 @@ package store
 import (
 	"pan/meta"
 
-	"git.100tal.com/wangxiao_go_lib/xesTools/confutil"
-
 	"github.com/beeker1121/goque"
+	"github.com/tal-tech/xtools/confutil"
 )
 
 type LevelDB struct {

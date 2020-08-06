@@ -13,13 +13,12 @@ import (
 
 	"pan/meta"
 
-	"git.100tal.com/wangxiao_go_lib/xesLogger"
 	"git.100tal.com/wangxiao_go_lib/xesTools/addrutil"
-	"git.100tal.com/wangxiao_go_lib/xesTools/confutil"
-
 	"github.com/facebookgo/grace/gracenet"
 	"github.com/henrylee2cn/teleport/socket"
 	"github.com/spf13/cast"
+	logger "github.com/tal-tech/loggerX"
+	"github.com/tal-tech/xtools/confutil"
 )
 
 type Server struct {

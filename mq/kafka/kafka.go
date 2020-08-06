@@ -10,11 +10,10 @@ import (
 	"pan/meta"
 	"pan/mq"
 
-	logger "git.100tal.com/wangxiao_go_lib/xesLogger"
-	"git.100tal.com/wangxiao_go_lib/xesTools/confutil"
-
 	"github.com/Shopify/sarama"
 	"github.com/spf13/cast"
+	logger "github.com/tal-tech/loggerX"
+	"github.com/tal-tech/xtools/confutil"
 )
 
 type Kafka struct {
