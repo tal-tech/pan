@@ -6,9 +6,9 @@ package test
 import (
 	"testing"
 
-	logger "git.100tal.com/wangxiao_go_lib/xesLogger"
-	"git.100tal.com/wangxiao_go_lib/xesTools/flagutil"
-	"git.100tal.com/wangxiao_go_lib/xesTools/kafkautil"
+	logger "github.com/tal-tech/loggerX"
+	"github.com/tal-tech/xtools/flagutil"
+	"github.com/tal-tech/xtools/kafkautil"
 )
 
 func BenchmarkKafkaFor10Byte(b *testing.B) {

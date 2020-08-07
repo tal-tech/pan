@@ -13,11 +13,11 @@ import (
 
 	"pan/meta"
 
-	"git.100tal.com/wangxiao_go_lib/xesTools/addrutil"
 	"github.com/facebookgo/grace/gracenet"
 	"github.com/henrylee2cn/teleport/socket"
 	"github.com/spf13/cast"
 	logger "github.com/tal-tech/loggerX"
+	"github.com/tal-tech/xtools/addrutil"
 	"github.com/tal-tech/xtools/confutil"
 )
 

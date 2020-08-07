@@ -14,10 +14,10 @@ import (
 	"pan/meta"
 	"pan/mq"
 
-	"git.100tal.com/wangxiao_go_lib/redisdao"
 	"github.com/Shopify/sarama"
 	"github.com/spf13/cast"
 	logger "github.com/tal-tech/loggerX"
+	redisdao "github.com/tal-tech/xredis"
 	"github.com/tal-tech/xtools/confutil"
 )
 

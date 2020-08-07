@@ -17,6 +17,8 @@ import (
 	"pan/mq"
 
 	"github.com/apache/rocketmq-client-go"
+	"github.com/apache/rocketmq-client-go/primitive"
+	"github.com/apache/rocketmq-client-go/producer"
 	"github.com/spf13/cast"
 	logger "github.com/tal-tech/loggerX"
 	"github.com/tal-tech/xtools/confutil"

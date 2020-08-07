@@ -14,11 +14,8 @@ import (
 	_ "pan/mq/rabbitmq"
 	_ "pan/mq/rocketmq"
 
-	"git.100tal.com/wangxiao_go_lib/xesLogger"
-	"git.100tal.com/wangxiao_go_lib/xesTools/limitutil"
-	"git.100tal.com/wangxiao_go_lib/xesTools/pprofutil"
-
 	"github.com/spf13/cast"
+	logger "github.com/tal-tech/loggerX"
 )
 
 var exit = make(chan string, 1)
@@ -27,11 +24,6 @@ func main() {
 	logger.InitLogger("")
 	defer recovery()
 	defer logger.Close()
-	if err := limitutil.GrowToMaxFdLimit(); err != nil {
-		logger.E("Fd Error", "try grow to max limit under normal priviledge, failed: %v", err)
-		return
-	}
-	go pprofutil.Pprof()
 	go dealSignal()
 
 	pm, err := mq.NewProxyManager()

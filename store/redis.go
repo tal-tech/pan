@@ -5,7 +5,7 @@ import (
 
 	"pan/meta"
 
-	"git.100tal.com/wangxiao_go_lib/redisdao"
+	redisdao "github.com/tal-tech/xredis"
 )
 
 type Redis struct {
