@@ -68,7 +68,7 @@ func (n *NSQ) Close() {
 
 func (n *NSQ) SetFailMode() {
 	var err error
-	n.failMode, err = failmode.GetFailMode(meta.NSQ, confutil.GetConfDefault("NSQProxy", "failMode", "retry"))
+	n.failMode, err = failmode.GetFailMode(meta.NSQ, confutil.GetConfDefault("NSQProxy", "failMode", "discard"))
 	if err != nil {
 		logger.F("NSQ SetFailMode error", err)
 	}

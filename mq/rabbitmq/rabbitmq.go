@@ -71,7 +71,7 @@ func (r *Rabbitmq) Close() {
 
 func (r *Rabbitmq) SetFailMode() {
 	var err error
-	r.failMode, err = failmode.GetFailMode(meta.Rabbitmq, confutil.GetConfDefault("RabbitmqProxy", "failMode", "retry"))
+	r.failMode, err = failmode.GetFailMode(meta.Rabbitmq, confutil.GetConfDefault("RabbitmqProxy", "failMode", "discard"))
 	if err != nil {
 		logger.F("Rabbitmq SetFailMode error", err)
 	}
