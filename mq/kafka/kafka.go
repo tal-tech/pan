@@ -98,7 +98,7 @@ func (k *Kafka) Close() {
 
 func (k *Kafka) SetFailMode() {
 	var err error
-	k.failMode, err = failmode.GetFailMode(meta.Kafka, confutil.GetConfDefault("KafkaProxy", "failMode", "retry"))
+	k.failMode, err = failmode.GetFailMode(meta.Kafka, confutil.GetConfDefault("KafkaProxy", "failMode", "discard"))
 	if err != nil {
 		logger.F("Kafka SetFailMode error", err)
 	}

@@ -69,7 +69,7 @@ func (r *Rocketmq) Close() {
 
 func (r *Rocketmq) SetFailMode() {
 	var err error
-	r.failMode, err = failmode.GetFailMode(meta.Rocketmq, confutil.GetConfDefault("RocketmqProxy", "failMode", "retry"))
+	r.failMode, err = failmode.GetFailMode(meta.Rocketmq, confutil.GetConfDefault("RocketmqProxy", "failMode", "discard"))
 	if err != nil {
 		logger.F("Rocketmq SetFailMode error", err)
 	}

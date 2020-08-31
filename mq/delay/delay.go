@@ -10,6 +10,7 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/tal-tech/xtools/addrutil"
 	"pan/failmode"
 	"pan/meta"
 	"pan/mq"
@@ -25,6 +26,7 @@ type Delay struct {
 	input    chan []byte
 	fallback chan<- []byte
 	failMode failmode.FailMode
+	address  string
 
 	successCount int64
 	errorCount   int64
@@ -47,6 +49,11 @@ func Init(quit chan struct{}, fallBack chan<- []byte) mq.MQ {
 	d.exit = make(chan struct{}, 1)
 	d.successCount = int64(0)
 	d.errorCount = int64(0)
+	ip, err := addrutil.Extract("")
+	if err != nil {
+		logger.F("DelayMQ get ip error", err)
+	}
+	d.address = ip
 	go d.dispatch()
 	go d.run(quit)
 	return d
@@ -62,7 +69,7 @@ func (d *Delay) Close() {
 
 func (d *Delay) SetFailMode() {
 	var err error
-	d.failMode, err = failmode.GetFailMode(meta.Delay, confutil.GetConfDefault("DelayMQProxy", "failMode", "retry"))
+	d.failMode, err = failmode.GetFailMode(meta.Delay, confutil.GetConfDefault("DelayMQProxy", "failMode", "discard"))
 	if err != nil {
 		logger.F("DelayMQ SetFailMode error", err)
 	}
@@ -70,7 +77,7 @@ func (d *Delay) SetFailMode() {
 
 func (d *Delay) dispatch() {
 	t := time.NewTicker(time.Second * 1)
-	keyName := confutil.GetConfDefault("DelayMQProxy", "key", "delay_queue")
+	keyName := confutil.GetConfDefault("DelayMQProxy", "key", "delay_queue") + "_" + d.address
 	limit := cast.ToInt(confutil.GetConfDefault("DelayMQProxy", "limit", "1000"))
 	for {
 		select {
@@ -80,13 +87,7 @@ func (d *Delay) dispatch() {
 			backs, err := redis.ZRangeByScore(keyName, nil, 0, now, "limit", 0, limit)
 			if err != nil {
 				logger.E("DelayMQPRoxy", "message read from redis error[%v]", err)
-				return
-			}
-			if len(backs) > 0 {
-				_, err = redis.ZRemRangeByRank(keyName, nil, 0, len(backs)-1)
-				if err != nil {
-					logger.E("DelayMQPRoxy", "delete message from redis error[%v]", err)
-				}
+				continue
 			}
 
 			for _, v := range backs {
@@ -97,11 +98,20 @@ func (d *Delay) dispatch() {
 					var sendTimestamp int64
 					kafkaItems := bytes.SplitN([]byte(v), []byte(" "), 7)
 					sendTimestamp = cast.ToInt64(string(kafkaItems[5]))
-					if int64(math.Abs(float64(sendTimestamp-now))) <= 5 {
+					if int64(math.Abs(float64(sendTimestamp-now))) < cast.ToInt64(confutil.GetConfDefault("DelayMQProxy", "window", "5")) {
 						d.fallback <- []byte(string(kafkaItems[0]) + " " + meta.Kafka + " " + string(kafkaItems[3]) + " " + string(kafkaItems[4]) + " " + string(kafkaItems[6]))
+					} else {
+						logger.E("DelayMQProxy", "message expire [%v]", v)
 					}
 				}
 			}
+			if len(backs) > 0 {
+				_, err = redis.ZRemRangeByRank(keyName, nil, 0, len(backs)-1)
+				if err != nil {
+					logger.E("DelayMQPRoxy", "delete message[%v] from redis error[%v]", backs, err)
+				}
+			}
+
 		case <-d.exit:
 			t.Stop()
 			logger.I("DelayMQRProxy", "DelayMQ dispatch exit")
@@ -112,7 +122,7 @@ func (d *Delay) dispatch() {
 func (d *Delay) run(quite chan struct{}) {
 	defer meta.Recovery()
 	t := time.NewTicker(time.Second * 60)
-	keyName := confutil.GetConfDefault("DelayMQProxy", "key", "delay_queue")
+	keyName := confutil.GetConfDefault("DelayMQProxy", "key", "delay_queue") + "_" + d.address
 	for {
 		select {
 		case <-t.C:

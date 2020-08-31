@@ -62,7 +62,7 @@ import (
     "fmt"
     "time"
  
-    "git.100tal.com/wangxiao_go_lib/xesTools/kafkautil"
+    "github.com/tal-tech/xtools/kafkautil"
 
     "github.com/spf13/cast"
 )
@@ -93,9 +93,9 @@ host=localhost:9999  //ip and post pan listen
 #### warn
 replace in go.mod
 ```shell
-replace github.com/henrylee2cn/teleport v5.0.0+incompatible => git.100tal.com/wangxiao_xueyan_gomirrors/github.com_henrylee2cn_teleport v1.0.0
+replace github.com/henrylee2cn/teleport v5.0.0+incompatible => github.com/hhtlxhhxy/github.com_henrylee2cn_teleport v1.0.0
 
 或
 
-replace github.com/henrylee2cn/teleport v0.0.0 => git.100tal.com/wangxiao_xueyan_gomirrors/github.com_henrylee2cn_teleport v1.0.0
+replace github.com/henrylee2cn/teleport v0.0.0 => github.com/hhtlxhhxy/github.com_henrylee2cn_teleport v1.0.0
 ```
