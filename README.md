@@ -10,6 +10,8 @@ Pan is a high performance and stable production side agent of messager-oriented 
 -----
 [Document](https://tal-tech.github.io/pan-doc/)
 
+[中文文档](https://www.yuque.com/tal-tech/pan)
+
 ## Framework
 ------
 The framework of Pan is shown as below.
