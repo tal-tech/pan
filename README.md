@@ -55,7 +55,8 @@ make
 ```
 #### 6. Run
 ```shell
-cd /home/pan
+tar -zxvf pan.tar.gz
+cd pan/
 ./bin/pan -c ../conf/conf.ini
 ```
 
