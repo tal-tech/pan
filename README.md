@@ -49,18 +49,16 @@ valid= //topic whitelist，if empty, all topic can be sended
 failMode=retry/save/discard
 
 ```
-#### 5. Make
-```shell
-make
-```
-#### 6. Run
+
+#### 5. Run
 ```shell
 tar -zxvf pan.tar.gz
 cd pan/
+make
 ./bin/pan -c ../conf/conf.ini
 ```
 
-#### 7. Send Message
+#### 6. Send Message
 
 ```go
 package main
