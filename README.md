@@ -5,6 +5,11 @@
 -----
 Pan is a high performance and stable production side agent of messager-oriented middleware written in pure Go language. It supports mainstream message queues in the market, such as Kafka, RabbitMQ, RocketMQ, NSQ, etc. Moreover, it is easy to be extended and can meet different business requirements in the production environment.
 
+
+## Document
+-----
+[Document](https://tal-tech.github.io/pan-doc/)
+
 ## Framework
 ------
 The framework of Pan is shown as below.
