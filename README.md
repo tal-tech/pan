@@ -1,4 +1,6 @@
 # Pan
+
+<img src="https://github.com/hhtlxhhxy/pan/blob/master/img/pan.jpg" alt="image-20200803155136931" style="zoom:50%;" />
 -----
 
 ## Background
@@ -50,7 +52,8 @@ make
 ```
 #### 6. Run
 ```shell
-./bin/triton -c ../conf/conf.ini
+cd /home/pan
+./bin/pan -c ../conf/conf.ini
 ```
 
 #### 7. Send Message
