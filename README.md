@@ -1,15 +1,20 @@
-# Pan
------
+# <img src="https://github.com/hhtlxhhxy/pan/blob/master/img/pan.jpg" alt="image-20200803155136931" style="zoom:50%;" />
 
+-----
 ## Background
 -----
 Pan is a high performance and stable production side agent of messager-oriented middleware written in pure Go language. It supports mainstream message queues in the market, such as Kafka, RabbitMQ, RocketMQ, NSQ, etc. Moreover, it is easy to be extended and can meet different business requirements in the production environment.
+
+
+## Document
+-----
+[Document](https://tal-tech.github.io/pan-doc/)
 
 ## Framework
 ------
 The framework of Pan is shown as below.
 
-<img src="https://github.com/hhtlxhhxy/pan/blob/master/img/framework.jpg" alt="image-20200803155136931" style="zoom:50%;" />
+<img src="https://github.com/hhtlxhhxy/pan/blob/master/img/fram1.jpg" alt="image-20200803155136931" style="zoom:50%;" />
 
 ## Quickstart
 
@@ -44,16 +49,16 @@ valid= //topic whitelist，if empty, all topic can be sended
 failMode=retry/save/discard
 
 ```
-#### 5. Make
+
+#### 5. Run
 ```shell
+tar -zxvf pan.tar.gz
+cd pan/
 make
-```
-#### 6. Run
-```shell
-./bin/triton -c ../conf/conf.ini
+./bin/pan -c ../conf/conf.ini
 ```
 
-#### 7. Send Message
+#### 6. Send Message
 
 ```go
 package main
