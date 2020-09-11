@@ -14,7 +14,7 @@ Pan is a high performance and stable production side agent of messager-oriented 
 ------
 The framework of Pan is shown as below.
 
-<img src="https://github.com/hhtlxhhxy/pan/blob/master/img/framework.jpg" alt="image-20200803155136931" style="zoom:50%;" />
+<img src="https://github.com/hhtlxhhxy/pan/blob/master/img/fram1.jpg" alt="image-20200803155136931" style="zoom:50%;" />
 
 ## Quickstart
 
