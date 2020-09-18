@@ -42,7 +42,7 @@ func init() {
 
 func Init(quit chan struct{}, fallBack chan<- []byte) mq.MQ {
 	cfg := sarama.NewConfig()
-	partitioner := confutil.GetConfDefault("KafkaProxy", "KafkaPartitioner", "round")
+	partitioner := confutil.GetConfDefault("KafkaProxy", "kafkaPartitioner", "round")
 	cfg.Producer.Partitioner = sarama.NewRoundRobinPartitioner
 	if partitioner == "hash" {
 		cfg.Producer.Partitioner = sarama.NewHashPartitioner
@@ -50,9 +50,9 @@ func Init(quit chan struct{}, fallBack chan<- []byte) mq.MQ {
 	if partitioner == "random" {
 		cfg.Producer.Partitioner = sarama.NewRandomPartitioner
 	}
-	cfg.Producer.Timeout = cast.ToDuration(confutil.GetConfDefault("KafkaProxy", "KafkaProducerTimeout", "10")) * time.Second
+	cfg.Producer.Timeout = cast.ToDuration(confutil.GetConfDefault("KafkaProxy", "kafkaProducerTimeout", "10")) * time.Second
 	cfg.Producer.Flush.MaxMessages = 5000
-	waitall := confutil.GetConf("KafkaProxy", "KafkaWaitAll")
+	waitall := confutil.GetConf("KafkaProxy", "kafkaWaitAll")
 	cfg.Producer.Return.Successes = true
 	cfg.Producer.Return.Errors = true
 	if confutil.GetConfDefault("KafkaProxy", "sasl", "false") == "true" {
@@ -65,7 +65,7 @@ func Init(quit chan struct{}, fallBack chan<- []byte) mq.MQ {
 	} else {
 		cfg.Producer.RequiredAcks = sarama.WaitForLocal
 	}
-	compression := confutil.GetConf("KafkaProxy", "KafkaCompression")
+	compression := confutil.GetConf("KafkaProxy", "kafkaCompression")
 	if compression != "" {
 		cfg.Producer.Compression = sarama.CompressionSnappy
 	}
