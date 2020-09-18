@@ -106,3 +106,13 @@ replace github.com/henrylee2cn/teleport v5.0.0+incompatible => github.com/hhtlxh
 
 replace github.com/henrylee2cn/teleport v0.0.0 => github.com/hhtlxhhxy/github.com_henrylee2cn_teleport v1.0.0
 ```
+
+## Contact us
+<p align="left">
+ <a href="https://tal-tech.github.io/pan-doc/" target="_blank">
+     <img src="https://cdn.nlark.com/yuque/0/2020/png/2138318/1600340932767-f20251e4-688a-4077-9721-9296f5319e56.png"  alt="Contact Us" align=center />
+ </a>
+</p>
+<p align="left">
+（微信扫一扫，申请加入开发讨论微信群）
+</p>
