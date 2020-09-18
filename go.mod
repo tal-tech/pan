@@ -2,6 +2,10 @@ module pan
 
 go 1.13
 
+replace github.com/apache/rocketmq-client-go v0.0.0 => github.com/hhtlxhhxy/github.com_apache_rocketmq-client-go-producer v1.0.0
+
+replace github.com/henrylee2cn/teleport v5.0.0+incompatible => github.com/hhtlxhhxy/github.com_henrylee2cn_teleport v1.0.0
+
 require (
 	github.com/Joinhack/fqueue v0.0.0-20140801051330-9afb37fd0de2
 	github.com/Shopify/sarama v1.24.1
@@ -36,7 +40,3 @@ require (
 	go.uber.org/zap v1.15.0 // indirect
 	gopkg.in/yaml.v2 v2.3.0 // indirect
 )
-
-replace github.com/apache/rocketmq-client-go v0.0.0 => github.com/hhtlxhhxy/github.com_apache_rocketmq-client-go-producer v1.0.0
-
-replace github.com/henrylee2cn/teleport v5.0.0+incompatible => github.com/hhtlxhhxy/github.com_henrylee2cn_teleport v1.0.0

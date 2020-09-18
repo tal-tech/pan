@@ -84,7 +84,7 @@ func (m *ProxyManager) Run(exit <-chan string) {
 			if mq != nil {
 				mq.Input() <- msg
 			} else {
-				logger.E("ProxyManager", "not support mq type%s", string(mqType))
+				logger.E("ProxyManager", "not support mq type %s", string(mqType))
 			}
 		case <-exit:
 			logger.I("ProxyManager", "server will close")
