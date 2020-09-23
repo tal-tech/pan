@@ -9,7 +9,7 @@
         <tag>goentry</tag>
         <type>file_trace</type>
         <level>INFO</level>
-        <property name="filename">/home/www/log/xeslog/pan/pan.log</property>
+        <property name="filename">/home/logs/xeslog/pan/pan.log</property>
         <!--
         %T - Time (15:04:05 MST)
         %t - Time (15:04)
