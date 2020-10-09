@@ -35,7 +35,7 @@ require (
 	github.com/tal-tech/loggerX v0.0.0-20200806121626-bc3db51db258
 	github.com/tal-tech/routinePool v0.0.0-20200806121001-477db7bdba8a // indirect
 	github.com/tal-tech/xredis v0.0.0-20200806132427-7807ee6297d9
-	github.com/tal-tech/xtools v0.0.0-20200806122720-d016f6d90e97
+	github.com/tal-tech/xtools v1.0.0
 	github.com/tidwall/gjson v1.6.0 // indirect
 	go.uber.org/zap v1.15.0 // indirect
 	gopkg.in/yaml.v2 v2.3.0 // indirect
